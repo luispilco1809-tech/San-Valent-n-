@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>San Valentín 💘</title>
+
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ffe6f0, #fff);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    img {
+      width: 220px;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      position: relative;
+      width: 300px;
+      height: 150px;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    #yes {
+      background-color: #ff4d88;
+      color: white;
+    }
+
+    #no {
+      position: absolute;
+      background-color: #aaa;
+      color: white;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 24px;
+      animation: floatUp 4s linear forwards;
+    }
+
+    @keyframes floatUp {
+      to {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <img src="https://i.imgur.com/1X6R6nR.png" alt="Snoopy con corazón">
+
+  <h1>💘 ¿Quieres ser mi San Valentín? 💘</h1>
+
+  <div class="buttons">
+    <button id="yes">Sí 💕</button>
+    <button id="no">No 😒</button>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+
+    // Botón NO huye
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 220;
+      const y = Math.random() * 120;
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    noBtn.addEventListener("click", () => {
+      alert("Tú me odias, ¿verdad? 😢");
+    });
+
+    // Botón SÍ
+    yesBtn.addEventListener("click", () => {
+      document.body.innerHTML = `
+        <img src="https://i.imgur.com/1X6R6nR.png" style="width:240px;">
+        <h1>💘 jijiji te amo mucho mi corazón 💘</h1>
+        <p>Me haces muy feliz 🥺❤️</p>
+      `;
+
+      // corazones flotando
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerText = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+      }, 300);
+    });
+  </script>
+
+</body>
+</html>
